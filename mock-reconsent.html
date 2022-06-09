@@ -29,13 +29,11 @@
             <input type="submit" value="Reconsent" class="w-100 btn btn-primary btn-large" style="max-width: 250px;">
 
             <input type="hidden" name="confirm" value="reconsent">
-            <input type="hidden" name="state">
         </form>
     </div>
     <script type="text/javascript">
         const urlParams = new URLSearchParams(window.location.search);
-        $('input[name="state"]').val(urlParams.get('state'));
-        $('form').attr('action', 'https://' + urlParams.get('auth0_domain') + '/continue');
+        $('form').attr('action', 'https://' + urlParams.get('auth0_domain') + '/continue?state=' + encodeURIComponent(urlParams.get('state')));
         $('#tos_revision').text(urlParams.get('tos_revision'));
         $('#pp_revision').text(urlParams.get('pp_revision'));
 

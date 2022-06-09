@@ -63,13 +63,12 @@
             <input type="submit" value="Continue" class="w-100 btn btn-primary btn-large" style="max-width: 250px;">
 
             <input type="hidden" name="confirm" value="yes">
-            <input type="hidden" name="state">
         </form>
     </div>
     <script type="text/javascript">
         const urlParams = new URLSearchParams(window.location.search);
         $('input[name="state"]').val(urlParams.get('state'));
-        $('form').attr('action', 'https://' + urlParams.get('auth0_domain') + '/continue');
+        $('form').attr('action', 'https://' + urlParams.get('auth0_domain') + '/continue?state=' + encodeURIComponent(urlParams.get('state')));
 
     </script>
 </body>
