@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="ja">
+<!-- https://www.kk-test.net/mock-register.html?state=x&auth0_domain=login.id.kk-test.net -->
+
+<head>
+    <meta charset="utf-8" />
+    <title>Mock Macnica ID</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"
+        integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                tos_revision: <span id="tos_revision"></span>
+            </div>
+            <div class="col-12">
+                pp_revision: <span id="pp_revision"></span>
+            </div>
+        </div>
+        <form method="get">
+            <hr>
+            <input type="submit" value="Reconsent" class="w-100 btn btn-primary btn-large" style="max-width: 250px;">
+
+            <input type="hidden" name="confirm" value="reconsent">
+            <input type="hidden" name="state">
+        </form>
+    </div>
+    <script type="text/javascript">
+        const urlParams = new URLSearchParams(window.location.search);
+        $('input[name="state"]').val(urlParams.get('state'));
+        $('form').attr('action', 'https://' + urlParams.get('auth0_domain') + '/continue');
+        $('#tos_revision').text(urlParams.get('tos_revision'));
+        $('#pp_revision').text(urlParams.get('pp_revision'));
+
+    </script>
+</body>
+
+</html>
